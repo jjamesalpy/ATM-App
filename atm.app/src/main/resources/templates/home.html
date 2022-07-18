@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+<title>ATM Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<div class="p-3 mb-2 bg-primary text-white">
+	<h1 class="text-center">ATM cash vending application</h1>
+</div>
+<body>
+
+	<div class="align-middle">
+		<figure class="text-center">
+			<blockquote class="blockquote">
+				<h1>Please Load Cash</h1>
+			</blockquote>
+			<figcaption class="blockquote-footer">Please provide
+				required denominations</figcaption>
+		</figure>
+	</div>
+	<form th:action="@{/loadCash}" method="post">
+		<div class="container">
+			<div class="small-box mx-auto">
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">
+						Amount Loading</span> <input type="text" class="form-control"
+						placeholder="Amount" aria-label="Amount"
+						aria-describedby="basic-addon1" name="LoadAmount" required>
+				</div>
+
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">Denomination
+						X 50</span> <input type="text" class="form-control" placeholder="X 50"
+						aria-label="X_50" aria-describedby="basic-addon1"
+						name="LoadDenom50" required>
+				</div>
+
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="inputGroup-sizing-sm">Denomination
+						X 20</span> <input type="text" class="form-control" placeholder="X 20"
+						aria-label="X_20" aria-describedby="basic-addon1"
+						name="LoadDenom20" required>
+				</div>
+			</div>
+
+
+			<button type="submit" class="btn btn-primary">
+				<span class="text-center">Load Cash </span>
+			</button>
+		</div>
+	</form>
+
+</body>
+</html>

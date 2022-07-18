@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+	crossorigin="anonymous">
+<link th:href="@{/css/styles.css}" rel="stylesheet" />
+<title>ATM Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" th:src="@{/js/cashLoaded.js}"></script>
+</head>
+<body>
+	<div class="p-3 mb-2 bg-primary text-white">
+		<h1 class="text-center">ATM cash vending application</h1>
+	</div>
+	<div class=" container justify-content-end align-middle" align="center">
+		<h2 class="text-center">ATM cash balance summary</h2>
+		<div class="input-group mb-3 align-middle text-center">
+			<table class="table table-striped align-middle table-bordered">
+				<thead>
+					<tr>
+						<th scope="col">Amount:</th>
+						<th scope="col">Denomination in 50</th>
+						<th scope="col">Denomination in 20</th>
+					</tr>
+				</thead>
+				<tbody>
+					<td><span th:text="${loadedCashModel.LoadAmount}"></span><br /></td>
+					<td><span th:text="${loadedCashModel.LoadDenom50}"></span><br /></td>
+					<td><span th:text="${loadedCashModel.loadDenom20}"></span><br /></td>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<section>
+		<div class="container align-items-center justify-content-center">
+			<div>
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+					data-bs-target="#loadWithdraw">Withdraw Cash</button>
+			</div>
+		</div>
+	</section>
+	<section>
+		<div class="container align-items-center justify-content-center">
+			<div class=" top top-buffer">
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal"
+					data-bs-target="#loadAdd">Add Cash</button>
+			</div>
+		</div>
+	</section>
+	<div class="modal fade" id="loadWithdraw" tabindex="-1"
+		aria-labelledby="modal-title" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modal-titlel">Withdraw cash</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<form th:action="@{/withdrawCash}" method="get">
+					<div class="modal-body">
+						<label for="withdrawAmount" id="LoadAmount" class="form-label">Amount</label>
+						<input type="text" class="form-control" placeholder="Amount"
+							aria-label="Amount" aria-describedby="basic-addon1"
+							name="LoadAmount" required>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary ">
+							<span class="text-center">Withdraw Cash </span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="loadAdd" tabindex="-1"
+		aria-labelledby="modal-title" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modal-titlel">Add cash</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<form th:action="@{/addCash}" method="post">
+					<div class="modal-body">
+						<label for="withdrawAmount" class="form-label">Amount</label> <input
+							type="text" class="form-control" placeholder="Amount"
+							aria-label="Amount" aria-describedby="basic-addon1"
+							name="LoadAmount" required> <input type="text"
+							class="form-control top-buffer" placeholder="X 50"
+							aria-label="X_50" aria-describedby="basic-addon1"
+							name="LoadDenom50" required> <input type="text"
+							class="form-control top-buffer" placeholder="X 20"
+							aria-label="X_20" aria-describedby="basic-addon1"
+							name="LoadDenom20" required>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" th:action="@{/withdrawCash}"
+							class="btn btn-primary ">
+							<span class="text-center">Add Cash </span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+		integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+		integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+		crossorigin="anonymous"></script>
+</body>
+</html>
